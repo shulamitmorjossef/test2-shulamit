@@ -26,18 +26,6 @@ from iterative_method import iterative_method
 from bisection_method import bisection_method
 
 
-# def input(mat):
-#     result = gaussianElimination(mat)
-#     f = lambda x: (math.exp(1)*x**5 - 3*x**3 + 2*x**2 + 1)/3*x
-#     roots = bisection_method(f, -2, 2)
-#     print(f"\nThe equation f(x) has an approximate root at x = {roots}")
-#     # f = lambda x: x ** 2 - 4
-#     # for i in range (-100,100, 1):
-#     #     roots = bisection_method(f, i, i+4)
-#     #     print(f"\nThe equation f(x) has an approximate root at x = {roots}" )
-#     # return result
-#     return
-
 def output():
     print("Date:18/3/24\n"
           "Group members: \n"
@@ -69,21 +57,43 @@ def output():
         for x in result:
             print("{:.6f}".format(x))
 
+
+
     print("\n\n\nThe roots: \n")
     f = lambda x: (math.exp(1) * x ** 5 - 3 * x ** 3 + 2 * x ** 2 + 1) / 3 * x
-    # roots = bisection_method(f, 0, 2)
-    # print(f"\nRoot: {roots}")
+
+
     roots = bisection_method(f, -2, 0)
     print(f"\nRoot: {roots}")
-    # for i in range (-2,2, 1):
-    #     initial_guess = i
-    #     root, iterations = iterative_method(f, initial_guess, -2, 2)  # Adjust lower and upper bounds as needed
-    #     if root is not None:
-    #         print(f"\nRoot:", root)
-    initial_guess = -2
-    root, iterations = iterative_method(f, initial_guess, -2, 2)  # Adjust lower and upper bounds as needed
-    if root is not None:
-        print(f"\nRoot:", root)
+
+
+    roots = bisection_method(f, 1, 2)
+    if(roots != None):
+        print(f"\nRoot: {roots}")
+
+
+    try:
+        for i in range(-2, 0, 1):
+            initial_guess = i
+            root, iterations = iterative_method(f, initial_guess, -2, 2)  # Adjust lower and upper bounds as needed
+            if root is not None:
+                print(f"\nRoot:", root)
+
+    except ValueError as e:
+        print(str(e))
+
+
+    try:
+        for i in range(1, 2, 1):
+            initial_guess = i
+            root, iterations = iterative_method(f, initial_guess, -2, 2)  # Adjust lower and upper bounds as needed
+            if root is not None:
+                print(f"\nRoot:", root)
+
+    except ValueError as e:
+        print(str(e))
+
+
     return
 
 

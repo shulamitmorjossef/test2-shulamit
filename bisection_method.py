@@ -28,7 +28,8 @@ Returns variables:
 """
 def bisection_method(f, a, b, tol=1e-6):
     if np.sign(f(a)) == np.sign(f(b)):
-        raise Exception("The scalars a and b do not bound a root")
+        return
+        # raise Exception("The scalars a and b do not bound a root")
     c, k = 0, 0
     steps = max_steps(a, b, tol)  # calculate the max steps possible
 
