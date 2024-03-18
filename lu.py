@@ -1,5 +1,5 @@
 import numpy as np
-
+import matrix_utility as mt
 from colors import bcolors
 from matrix_utility import swap_rows_elementary_matrix, row_addition_elementary_matrix
 
@@ -74,6 +74,28 @@ def lu_solve(A_b):
     print(bcolors.OKBLUE,"\nSolution for the system:")
     for x in result:
         print("{:.6f}".format(x))
+
+
+def gauss_seidel_formula(matrix, Xr, b):
+    _L = mt.l_mat(matrix) # calculate the L matrix
+    _D = mt.diagonal_mat(matrix) # calculate the D matrix
+    _U = mt.U_mat(matrix) # calculate the U matrix
+
+    sum_L_D = mt.sum_matrices(_L, _D) # calculate: (L+D)
+    inverse_sum_L_D = mt.inverse(sum_L_D) # calculate: (L+D)^-1
+    inverse_mult_U = mt.matrix_multiply(inverse_sum_L_D, _U) # calculate: (L+D)^-1 * U
+    becomes_minus = mt.mult_matrix_in_scalar(inverse_mult_U, -1) # calculate: -(L+D)^-1 * U
+    mat_mult_x0 = mt.MulMatrixVector(becomes_minus, Xr) # calculate: (-(L+D)^-1 * U) *X0
+
+    inverse_mult_b = mt.MulMatrixVector(inverse_sum_L_D, b) # calculate: (L+D)^-1 * b
+
+    result_vector = mt.sum_vectors(mat_mult_x0, inverse_mult_b)
+    return result_vector
+
+# becomes_minus , זה הG של נוסחת זיידל
+
+# כדי למצוא את הg המדובר צריך לשלוח את becomes_minus לפונקציית הנורמה
+
 
 
 if __name__ == '__main__':

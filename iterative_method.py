@@ -48,12 +48,12 @@ def find_roots_iterative_method(a,b,c):
     f1 = lambda x: a * x ** 2 + b * x ** 3 + c ** 2 * x ** 9
     f2 = lambda x: a*x**2 - b*math.sin(x) + c
     f3 = lambda x: math.sin(x)
-    f4 = lambda x: x**2
+    f4 = lambda x: x**2 -4
 
 
     for i in range (-100,100, 1):
         initial_guess = i
-        root, iterations = iterative_method(f1, initial_guess, -200, 200)  # Adjust lower and upper bounds as needed
+        root, iterations = iterative_method(f4, initial_guess, -200, 200)  # Adjust lower and upper bounds as needed
         if root is not None:
             print(bcolors.OKBLUE, f"Root:", root, bcolors.ENDC)
             # print(bcolors.OKBLUE,"Number of iterations:", iterations,bcolors.ENDC)

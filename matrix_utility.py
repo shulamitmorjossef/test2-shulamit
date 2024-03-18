@@ -41,7 +41,7 @@ def is_diagonally_dominant(mat):
 
     d = np.diag(np.abs(mat))  # Find diagonal coefficients
     s = np.sum(np.abs(mat), axis=1) - d  # Find row sum without diagonal
-    return np.all(d > s)
+    return np.all(d < s)
 
 
 def is_square_matrix(mat):
@@ -165,7 +165,7 @@ def Determinant(matrix, mul):
     return det
 
 
-def partial_pivoting(A,i,N,id):
+def partial_pivoting(A,i,N,id = 0):
     pivot_row = i
     v_max = A[pivot_row][i]
     for j in range(i + 1, N):
