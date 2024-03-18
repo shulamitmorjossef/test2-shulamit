@@ -40,7 +40,10 @@ def output():
            "[2, 1, -5, -3, 5, 2],\n"
            "[-5, -6, 4, 1, 3, 14],\n"
            "[3, -2, -2, -3, 5, 6]]\n")
-    print("output:\n ")
+    print("(e * x ** 5 - 3 * x ** 3 + 2 * x ** 2 + 1)\n"
+          "------------------------------------------\n"
+          "               3 * x")
+    print("\noutput:\n ")
     print("The matrix solution: \n")
 
 
@@ -53,13 +56,13 @@ def output():
     if isinstance(result, str):
         print(result)
     else:
-        print("\nSolution for the system:")
+        print("Solution for the system:")
         for x in result:
             print("{:.6f}".format(x))
 
 
 
-    print("\n\n\nThe roots: \n")
+    print("\nThe roots: ")
     f = lambda x: (math.exp(1) * x ** 5 - 3 * x ** 3 + 2 * x ** 2 + 1) / 3 * x
 
 
